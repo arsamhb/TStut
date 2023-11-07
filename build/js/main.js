@@ -1,18 +1,16 @@
 "use strict";
-class employee {
-    constructor(name, salary = 10000, stack, level) {
-        this.name = name;
-        this.salary = salary;
-        this.stack = stack;
-        this.level = level;
-        this.paySalary = () => {
-            console.log(`the salary of ${this.name} is ${this.salary}`);
-        };
-        this.name = name;
-        this.salary = salary;
-        this.stack = stack;
-        this.level = level;
+// index signature
+const todayTransactions = {
+    coffee: -50,
+    food: -100,
+    clothes: -500,
+};
+const sum = (obj) => {
+    let total = 0;
+    for (const transaction in obj) {
+        total += obj[transaction];
     }
-}
-const arsam = new employee("arasm", 12000, ["react", "html", "css"], "junior");
-arsam.paySalary();
+    return total;
+};
+console.log(sum(todayTransactions));
+console.log(Object.keys(todayTransactions));

@@ -1,20 +1,30 @@
-class employee {
-  constructor(
-    public name: string,
-    private salary: number = 10000,
-    readonly stack: string[],
-    protected level: "junior" | "mid" | "senior"
-  ) {
-    this.name = name;
-    this.salary = salary;
-    this.stack = stack;
-    this.level = level;
-  }
+// index signature
 
-  paySalary = () => {
-    console.log(`the salary of ${this.name} is ${this.salary}`);
-  };
+// interface ITransaction {
+//   readonly [key: string]: number;
+//   [key: string]: number;
+// }
+
+interface ITransaction {
+  coffee: number;
+  food: number;
+  clothes: number;
 }
 
-const arsam = new employee("arasm", 12000, ["react", "html", "css"], "junior");
-arsam.paySalary()
+const todayTransactions: ITransaction = {
+  coffee: -50,
+  food: -100,
+  clothes: -500,
+};
+
+const sum = (obj: ITransaction) => {
+  let total = 0;
+  for (const transaction in obj) {
+    total += obj[transaction as keyof ITransaction];
+  }
+  return total;
+};
+
+console.log(sum(todayTransactions));
+
+console.log(Object.keys(todayTransactions));
