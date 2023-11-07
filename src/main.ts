@@ -1,14 +1,20 @@
-type One = string;
-type Two = string | number;
-type Three = "hello";
+class employee {
+  constructor(
+    public name: string,
+    private salary: number = 10000,
+    readonly stack: string[],
+    protected level: "junior" | "mid" | "senior"
+  ) {
+    this.name = name;
+    this.salary = salary;
+    this.stack = stack;
+    this.level = level;
+  }
 
-const a: One = "bye";
-const b = a as Two;
-const c = a as Three;
-console.log(`first  ${b}`);
-console.log(`second  ${typeof b}`);
+  paySalary = () => {
+    console.log(`the salary of ${this.name} is ${this.salary}`);
+  };
+}
 
-const year = <HTMLElement>document.getElementById("year");
-const thisYear = new Date().getFullYear();
-year.setAttribute("datetime", `${thisYear}`);
-year.textContent = `${thisYear}`;
+const arsam = new employee("arasm", 12000, ["react", "html", "css"], "junior");
+arsam.paySalary()
